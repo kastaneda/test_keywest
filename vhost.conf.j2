@@ -1,7 +1,11 @@
 <VirtualHost *:80>
     DocumentRoot {{ document_root }}
 
-    FallbackResource /index.php
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ /index.php [QSA,L]
 
     <Directory {{ document_root }}>
         AllowOverride All

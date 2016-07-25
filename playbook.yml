@@ -30,6 +30,14 @@
       notify:
         - reload Apache
 
+    - name: enable Apache module mod_rewrite
+      file:
+        src=/etc/apache2/mods-available/rewrite.load
+        dest=/etc/apache2/mods-enabled/rewrite.load
+        state=link
+      notify:
+        - reload Apache
+
     - name: run site build script
       command: make
       args:
