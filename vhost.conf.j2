@@ -1,6 +1,8 @@
 <VirtualHost *:80>
     DocumentRoot {{ document_root }}
 
+    FallbackResource /index.php
+
     <Directory {{ document_root }}>
         AllowOverride All
         Require all granted
