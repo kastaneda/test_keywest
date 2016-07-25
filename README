@@ -1,4 +1,23 @@
 
+Методы API:
+
+ * GET /v1/bookmark/latest
+ * GET /v1/bookmark/{url}
+ * PUT /v1/bookmark/{url}
+ * POST /v1/bookmark/{id}
+ * PUT /v1/comment/{id}
+ * DELETE /v1/comment/{id}
+
+Примеры:
+
+ * http://localhost:8001/v1/bookmark/latest
+ * http://localhost:8001/v1/bookmark/https://nonexistent
+ * http://localhost:8001/v1/bookmark/https://github.com/kastaneda/kw
+
+
 Описание задачи:
 
  * https://gist.github.com/luchaninov/6985193e84f3a4fe4de408e442aeea8b
+
+
+/v1/bookmark/url/https%3A%2F%2Fgithub.com%2Fkastaneda%2Fkw
