@@ -4,7 +4,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `bookmark` (
 `id` int(10) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
-  `url` text COLLATE utf8_unicode_ci NOT NULL
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `comment` (
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 
 
 ALTER TABLE `bookmark`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `url` (`url`);
 
 ALTER TABLE `comment`
  ADD PRIMARY KEY (`id`), ADD KEY `bookmark_id` (`bookmark_id`);
