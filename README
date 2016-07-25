@@ -1,12 +1,14 @@
 
+Запуск: `vagrant up`
+
 Методы API:
 
  * GET /v1/bookmark/latest - получить последние 10 закладок
  * GET /v1/bookmark/{url} - получить закладку с комментариями по URL
  * PUT /v1/bookmark/{url} - создать закладку
- * POST /v1/bookmark/{id} - добавить комментарий к закладке
- * PUT /v1/comment/{id} - изменить комментарий
- * DELETE /v1/comment/{id} - удалить комментарий
+ * (not implemented) POST /v1/bookmark/{id} - добавить комментарий к закладке
+ * (not implemented) PUT /v1/comment/{id} - изменить комментарий
+ * (not implemented) DELETE /v1/comment/{id} - удалить комментарий
 
 Примеры:
 
