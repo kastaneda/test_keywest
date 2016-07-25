@@ -49,15 +49,16 @@ $app->put('/v1/bookmark/{url}', function ($url) use ($app) {
 // Add new comment to bookmark by bookmark id
 
 $app->post('/v1/bookmark/{id}', function ($id, Request $request) use ($app) {
-    $ip = $request->getClientIp();
-    return $ip;
-    //$app->abort(403); // TBD
+    // $ip = $request->getClientIp();
+    // INSERT INTO comment (created_at, ip, `text`) VALUES (NOW(), ?, ?)
+    $app->abort(403); // TBD
 })->assert('id', '\d+');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Replace comment by comment id
 
 $app->put('/v1/comment/{id}', function ($id, Request $request) use ($app) {
+    // UPDATE comment SET `text` = ? WHERE ip = ? AND created_at > SUBTIME(NOW(), '1:00:00')
     $app->abort(403); // TBD
 })->assert('id', '\d+');
 
@@ -65,6 +66,7 @@ $app->put('/v1/comment/{id}', function ($id, Request $request) use ($app) {
 // Delete comment by comment id
 
 $app->delete('/v1/comment/{id}', function ($id, Request $request) use ($app) {
+    // DELETE comment WHERE ip = ? AND created_at > SUBTIME(NOW(), '1:00:00')
     $app->abort(403); // TBD
 })->assert('id', '\d+');
 
