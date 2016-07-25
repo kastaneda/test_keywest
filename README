@@ -1,12 +1,12 @@
 
 Методы API:
 
- * GET /v1/bookmark/latest
- * GET /v1/bookmark/{url}
- * PUT /v1/bookmark/{url}
- * POST /v1/bookmark/{id}
- * PUT /v1/comment/{id}
- * DELETE /v1/comment/{id}
+ * GET /v1/bookmark/latest - получить последние 10 закладок
+ * GET /v1/bookmark/{url} - получить закладку с комментариями по URL
+ * PUT /v1/bookmark/{url} - создать закладку
+ * POST /v1/bookmark/{id} - добавить комментарий к закладке
+ * PUT /v1/comment/{id} - изменить комментарий
+ * DELETE /v1/comment/{id} - удалить комментарий
 
 Примеры:
 
@@ -15,10 +15,8 @@
  * http://localhost:8001/v1/bookmark/https://github.com/kastaneda/kw
 
  * FIXME: примеры для PUT / POST / DELETE (например, через curl)
+ * curl -X PUT 'http://localhost:8001/v1/bookmark/http://example.com/'
 
 Описание задачи:
 
  * https://gist.github.com/luchaninov/6985193e84f3a4fe4de408e442aeea8b
-
-
-/v1/bookmark/url/https%3A%2F%2Fgithub.com%2Fkastaneda%2Fkw

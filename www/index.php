@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Request;
+
 require_once __DIR__.'/../vendor/autoload.php'; 
 
 $app = new Silex\Application(); 
@@ -36,14 +38,20 @@ $app->get('/v1/bookmark/{url}', function ($url) use ($app) {
 // Create bookmark by URL
 
 $app->put('/v1/bookmark/{url}', function ($url) use ($app) {
-    $app->abort(403); // TBD
+    $sql = 'INSERT IGNORE INTO bookmark (created_at, url) VALUES (NOW(), ?)';
+    $app['db']->executeQuery($sql, [$url]);
+    $sql = 'SELECT id FROM bookmark WHERE url = ?';
+    $id = $app['db']->fetchColumn($sql, [$url]);
+    return $app->json($id);
 })->assert('url', 'http.+');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Add new comment to bookmark by bookmark id
 
 $app->post('/v1/bookmark/{id}', function ($id, Request $request) use ($app) {
-    $app->abort(403); // TBD
+    $ip = $request->getClientIp();
+    return $ip;
+    //$app->abort(403); // TBD
 })->assert('id', '\d+');
 
 ////////////////////////////////////////////////////////////////////////////////
