@@ -1,0 +1,12 @@
+<?php
+
+return [
+    'db.options' => [
+        'driver'    => 'pdo_mysql',
+        'dbname'    => 'test',
+        'host'      => 'localhost',
+        'user'      => 'root',
+        'password'  => '',
+        'charset'   => 'utf8',
+    ],
+];
