@@ -8,12 +8,17 @@ $app['debug'] = true;
 $app->register(new Silex\Provider\DoctrineServiceProvider(),
     include __DIR__ . '/../config.php');
 
-$app->get('/v1/bookmark/latest', function () use ($app) {
-    $sql = "SELECT * FROM bookmark ORDER BY created_at DESC LIMIT 0,10";
-    $data = $app['db']->fetchAll($sql);
+////////////////////////////////////////////////////////////////////////////////
+// Get last 10 bookmarks
 
+$app->get('/v1/bookmark/latest', function () use ($app) {
+    $sql = 'SELECT * FROM bookmark ORDER BY created_at DESC LIMIT 0,10';
+    $data = $app['db']->fetchAll($sql);
     return $app->json($data);
 }); 
+
+////////////////////////////////////////////////////////////////////////////////
+// Get bookmark (with comments) by URL, if exists
 
 $app->get('/v1/bookmark/{url}', function ($url) use ($app) {
     $sql = 'SELECT * FROM bookmark WHERE url = ?';
@@ -27,19 +32,31 @@ $app->get('/v1/bookmark/{url}', function ($url) use ($app) {
     }
 })->assert('url', 'http.+');
 
+////////////////////////////////////////////////////////////////////////////////
+// Create bookmark by URL
+
 $app->put('/v1/bookmark/{url}', function ($url) use ($app) {
     $app->abort(403); // TBD
 })->assert('url', 'http.+');
 
-$app->post('/v1/bookmark/{id}', function ($id) use ($app) {
+////////////////////////////////////////////////////////////////////////////////
+// Add new comment to bookmark by bookmark id
+
+$app->post('/v1/bookmark/{id}', function ($id, Request $request) use ($app) {
     $app->abort(403); // TBD
 })->assert('id', '\d+');
 
-$app->put('/v1/comment/{id}', function ($id) use ($app) {
+////////////////////////////////////////////////////////////////////////////////
+// Replace comment by comment id
+
+$app->put('/v1/comment/{id}', function ($id, Request $request) use ($app) {
     $app->abort(403); // TBD
 })->assert('id', '\d+');
 
-$app->delete('/v1/comment/{id}', function ($id) use ($app) {
+////////////////////////////////////////////////////////////////////////////////
+// Delete comment by comment id
+
+$app->delete('/v1/comment/{id}', function ($id, Request $request) use ($app) {
     $app->abort(403); // TBD
 })->assert('id', '\d+');
 

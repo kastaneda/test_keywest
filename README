@@ -14,6 +14,7 @@
  * http://localhost:8001/v1/bookmark/https://nonexistent
  * http://localhost:8001/v1/bookmark/https://github.com/kastaneda/kw
 
+ * FIXME: примеры для PUT / POST / DELETE (например, через curl)
 
 Описание задачи:
 
