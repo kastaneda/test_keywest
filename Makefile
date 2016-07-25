@@ -19,6 +19,6 @@ db-installed:
 
 clean:
 	rm -rf composer.phar vendor/ config.php db-installed
-	echo "DROP DATABASE test" | mysql -u root
+	#echo "DROP DATABASE test" | mysql -u root
 
 .PHONY: install clean
