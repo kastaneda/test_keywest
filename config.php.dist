@@ -8,5 +8,8 @@ return [
         'user'      => 'root',
         'password'  => '',
         'charset'   => 'utf8',
+        'driverOptions' => [
+            1002 => 'SET NAMES utf8',
+        ],
     ],
 ];
